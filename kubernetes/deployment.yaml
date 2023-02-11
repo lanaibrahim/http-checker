@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: http-checker
+  namespace: tools
+  labels:
+    app: http-checker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: http-checker
+  template:
+    metadata:
+      name: http-checker
+      labels:
+        app: http-checker
+    spec:
+      containers:
+        - name: http-checker
+          image: maulanaibrahim/http-checker:1.0
+          ports:
+            - containerPort: 4999

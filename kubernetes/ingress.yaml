@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  name: http-checker
+  namespace: tools
+spec:
+  rules:
+  - host: http-checker.example.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: http-checker
+            port:
+              number: 4999
+        pathType: ImplementationSpecific
